@@ -17,7 +17,7 @@ const CreateProject = () => {
         }
     };
     return (
-        <div className='main flex justify-center items-center w-screen h-screen '>
+        <div className=' flex justify-center items-center w-screen h-screen '>
 
             <div class="flex flex-col space-y-4 w-full max-w-md mx-auto p-8 border-2 ">
                 <div>
@@ -66,7 +66,7 @@ const CreateProject = () => {
                     </div>
                     <div className=' ml-4 w-1/2'>
                     <div class="flex justify-between items-center pt-4">
-                        <button class="">Back</button>
+                        <button class=""><i class="fa-solid fa-angle-left mr-2"></i>Back</button>
                         <button class="text-white bg-sky-600 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-500 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-500">Next</button>
                     </div>
                     </div>
