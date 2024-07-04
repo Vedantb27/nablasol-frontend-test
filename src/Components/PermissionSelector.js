@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const PermissionSelector = () => {
     const [selectedOption, setSelectedOption] = useState('Only Admins');
+    const navigate = useNavigate();
+
+    const handleNext = () => {
+        navigate('/TaskManager');
+    };
+    const handleBack = () => {
+      navigate('/SelectView');
+    };
 
     return (
         <div className=' flex justify-center items-center w-screen h-screen '>
@@ -45,9 +53,9 @@ const PermissionSelector = () => {
                     </div>
                 </div>
 
-                <div className="mt-20 flex justify-between items-center">
-                    <button className="text-blue-500"><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
-                    <button className="py-2 px-4 bg-blue-500 text-white rounded-md">Next</button>
+                <div className="w-2/3 flex justify-between mt-6">
+                    <button className="text-slate-500" onClick={handleBack}><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
+                    <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
                 </div>
             </div>
         </div>

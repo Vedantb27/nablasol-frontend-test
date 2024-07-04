@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProjectType = () => {
   const [hourlyRate, setHourlyRate] = useState('₹12,678.00');
   const [budgetPercentage, setBudgetPercentage] = useState(80);
   const [selectedButton, setSelectedButton] = useState('Time & Materials');
+  
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate('/SelectView');
+};
+const handleBack = () => {
+  navigate('/');
+};
 
   const handleButtonClick = (buttonType) => {
     setSelectedButton(buttonType);
@@ -77,8 +87,8 @@ const ProjectType = () => {
         </div>
         <div>
           <div className='w-2/3 flex justify-between'>
-            <button><i class="fa-solid fa-angle-left mr-2"></i>Back</button>
-            <button className="w-24 py-2 bg-blue-500 text-white rounded-md">Next</button>
+            <button className='text-slate-500' onClick={handleBack}><i class="fa-solid fa-angle-left mr-2"></i>Back</button>
+            <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
           </div>
         </div>
       </div>

@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SelectView = () => {
   const [selectedView, setSelectedView] = useState('Board');
+  const navigate = useNavigate();
 
+  const handleNext = () => {
+    navigate('/PermissionSelector');
+};
+const handleBack = () => {
+  navigate('/ProjectType');
+};
   return (
     <div className=' flex justify-center items-center w-screen h-screen '>
     <div className="max-w-md mx-auto bg-white shadow-md rounded-md p-6 border-2 h-96">
@@ -25,12 +33,10 @@ const SelectView = () => {
           <span className="text-gray-700">Board</span>
         </button>
       </div>
-      <div className=' ml-4 w-2/3 mt-20'>
-      <div className="flex justify-between items-center">
-        <button className="text-blue-500"><i class="fa-solid fa-angle-left mr-2"></i>Back</button>
-        <button className="py-2 px-4 bg-blue-500 text-white rounded-md">Next</button>
-      </div>
-      </div>
+      <div className="w-2/3 flex justify-between mt-16 ">
+                    <button className="text-slate-500" onClick={handleBack}><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
+                    <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
+                </div>
     </div>
      </div>
   );
