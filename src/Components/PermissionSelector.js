@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useProject } from '../context/ProjectContext';
+
 const PermissionSelector = () => {
-    const [selectedOption, setSelectedOption] = useState('Only Admins');
+    const {selectedOption, setSelectedOption} = useProject();
     const navigate = useNavigate();
 
     const handleNext = () => {
@@ -62,6 +64,5 @@ const PermissionSelector = () => {
         </div>
     );
 };
-
 
 export default PermissionSelector;

@@ -105,6 +105,4 @@ export const ProjectProvider = ({ children }) => {
     );
 };
 
-
-
 export const useProject = () => useContext(ProjectContext);

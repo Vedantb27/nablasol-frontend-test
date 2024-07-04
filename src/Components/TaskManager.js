@@ -1,27 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useProject } from '../context/ProjectContext';
 
 const TaskManager = () => {
-    const initialTasks = [
-        'Marketing Website Design',
-        'Branding Design',
-        'UI/UX Fundamentals',
-        'Wireframe and Prototyping',
-        'Style Guide',
-        'UX Research and Flows',
-        'Layout design',
-    ];
-
-    const [tasks, setTasks] = useState(initialTasks);
-    const [newTask, setNewTask] = useState('');
-    const [selectedTasks, setSelectedTasks] = useState([]);
+    const {
+        tasks,
+        setTasks,
+        newTask,
+        setNewTask,
+        selectedTasks,
+        setSelectedTasks
+    } = useProject();
     const navigate = useNavigate();
 
     const handleNext = () => {
+        if (selectedTasks.length === 0) {
+            alert('Please select at least one task.');
+            return;
+        }
         navigate('/TeamManager');
     };
+
     const handleBack = () => {
-      navigate('/PermissionSelector');
+        navigate('/PermissionSelector');
     };
 
     const handleAddTask = () => {
@@ -93,14 +94,12 @@ const TaskManager = () => {
                 ))}
             </ul>
             <div className="w-2/3 flex justify-between mt-4">
-                    <button className="text-slate-500" onClick={handleBack}><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
-                    <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
-                </div>
+                <button className="text-slate-500" onClick={handleBack}><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
+                <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
+            </div>
         </div>
         </div>
-       
     );
 };
-
 
 export default TaskManager;
