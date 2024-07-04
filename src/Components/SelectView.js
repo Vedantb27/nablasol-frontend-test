@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useProject } from '../context/ProjectContext';
 
 const SelectView = () => {
-  const [selectedView, setSelectedView] = useState('Board');
+  const {selectedView, setSelectedView} =   useProject() ;
   const navigate = useNavigate();
 
   const handleNext = () => {

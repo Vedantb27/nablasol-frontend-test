@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useProject } from '../context/ProjectContext';
 
 const CreateProject = () => {
-    const [newClient, setNewClient] = useState('');
-    const [clients, setClients] = useState([]);
+    const {
+        newClient, setNewClient,
+        clients, setClients,
+        projectName, setProjectName,
+        selectedClient, setSelectedClient,
+        startDate, setStartDate,
+        endDate, setEndDate,
+        notes, setNotes
+    } = useProject();
+
     const navigate = useNavigate();
 
     const handleAddClient = () => {
@@ -17,9 +26,34 @@ const CreateProject = () => {
     };
 
     const handleNext = () => {
+        // Validate project name
+        if (projectName.trim() === '') {
+            alert('Project name cannot be empty');
+            return;
+        }
+    
+        // Validate selected client
+        if (selectedClient === '') {
+            alert('Please select a client');
+            return;
+        }
+    
+        // Validate start date
+        if (startDate === '') {
+            alert('Please select a start date');
+            return;
+        }
+    
+        // Validate end date
+        if (endDate === '') {
+            alert('Please select an end date');
+            return;
+        }
+    
+        // If all validations pass, navigate to '/ProjectType'
         navigate('/ProjectType');
     };
-
+    
     return (
         <div className='flex justify-center items-center w-screen h-screen'>
             <div className="flex flex-col space-y-4 w-full max-w-md mx-auto p-8 border-2">
@@ -33,6 +67,8 @@ const CreateProject = () => {
                         id="project_name"
                         className="shadow-sm border border-gray-300 rounded-md w-full p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Enter project name here"
+                        value={projectName}
+                        onChange={(e) => setProjectName(e.target.value)}
                     />
                 </div>
                 <div className="flex flex-col space-y-1">
@@ -42,9 +78,11 @@ const CreateProject = () => {
                             <select
                                 id="client"
                                 className="shadow-sm border border-gray-300 rounded-md w-full cursor-pointer p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                value={selectedClient}
+                                onChange={(e) => setSelectedClient(e.target.value)}
                             >
                                 <option value="">Select a client</option>
-                                <option value="Apple">Apple </option>
+                                <option value="Apple">Apple</option>
                                 <option value="Google">Google</option>
                                 {clients.map(client => (
                                     <option key={client.value} value={client.value}>{client.label}</option>
@@ -85,12 +123,16 @@ const CreateProject = () => {
                             id="start_date"
                             className="shadow-sm border border-gray-300 rounded-md w-full p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Start Date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
                         />
                         <input
                             type="date"
                             id="end_date"
                             className="shadow-sm border border-gray-300 rounded-md w-full p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="End Date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
                         />
                     </div>
                 </div>
@@ -101,6 +143,8 @@ const CreateProject = () => {
                         rows="3"
                         className="shadow-sm border border-gray-300 rounded-md w-full p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Optional"
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
                     ></textarea>
                 </div>
                 <div className="w-2/3 flex justify-between mt-6">
