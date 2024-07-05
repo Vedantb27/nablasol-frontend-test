@@ -55,8 +55,8 @@ const CreateProject = () => {
     };
     
     return (
-        <div className='flex justify-center items-center w-screen h-screen'>
-            <div className="flex flex-col space-y-4 w-full max-w-md mx-auto p-8 border-2">
+        <div className='flex justify-center items-center w-full min-h-screen bg-slate-200'>
+            <div className="flex flex-col space-y-4 w-full max-w-lg mx-4 sm:mx-auto p-4 sm:p-8 border-2 rounded-xl bg-white">
                 <div>
                     <h1 className="text-xl font-bold text-center">Create a project</h1>
                 </div>
@@ -73,8 +73,8 @@ const CreateProject = () => {
                 </div>
                 <div className="flex flex-col space-y-1">
                     <label htmlFor="client" className="text-sm font-medium">Client</label>
-                    <div className='flex justify-around'>
-                        <div className="relative w-1/2">
+                    <div className='flex flex-col sm:flex-row justify-around'>
+                        <div className="relative w-full sm:w-1/2 mb-2 sm:mb-0">
                             <select
                                 id="client"
                                 className="shadow-sm border border-gray-300 rounded-md w-full cursor-pointer p-1 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
@@ -102,8 +102,8 @@ const CreateProject = () => {
                                 </svg>
                             </div>
                         </div>
-                        <p className='ml-4 mr-4'>OR</p>
-                        <div className='border border-gray-300 w-2/4 flex items-center rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500'>
+                        <p className='mx-4 text-center sm:text-left'>OR</p>
+                        <div className='flex w-full sm:w-2/4 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500'>
                             <i className="fa-solid fa-plus ml-2 cursor-pointer" onClick={handleAddClient}></i>
                             <input
                                 type="text"
@@ -117,7 +117,7 @@ const CreateProject = () => {
                 </div>
                 <div className="flex flex-col space-y-1">
                     <label htmlFor="dates" className="text-sm font-medium">Dates</label>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <input
                             type="date"
                             id="start_date"
@@ -147,7 +147,7 @@ const CreateProject = () => {
                         onChange={(e) => setNotes(e.target.value)}
                     ></textarea>
                 </div>
-                <div className="w-2/3 flex justify-between mt-6">
+                <div className="w-full sm:w-2/3 flex justify-between mt-6">
                     <button className="text-slate-500" onClick={()=>console.log("back")}><i className="fa-solid fa-angle-left mr-2"></i>Back</button>
                     <button className="w-24 py-2 bg-blue-500 text-white rounded-md" onClick={handleNext}>Next</button>
                 </div>
